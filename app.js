@@ -20,6 +20,17 @@ switch(accion) {
             archivoTareas.guardarTarea(nuevaTarea)
         break;
 
+    case 'filtrar':
+        let estadoParaFiltrar = process.argv[3]
+        let listaParseada2 = archivoTareas.leerJSON()
+        // let arrayDeTareasFiltradas = []
+        for(let i = 0; i<listaParseada2.length; i++){
+        let estadoTareaQueRecorro = listaParseada2[i].estado
+        if(estadoParaFiltrar == estadoTareaQueRecorro){
+        console.log(listaParseada2[i])
+        }
+        }
+        break;
 
 
     case undefined:
