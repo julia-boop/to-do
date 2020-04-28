@@ -13,6 +13,17 @@ let archivoTareas = {
         listadoTareas.push(tarea)
         this.escribirJSON(listadoTareas)
 
+    },
+    filtrarPorEstado: function (estadoParaFiltrar){
+        let listaParseada = this.leerJSON();
+        let arrayDeTareasFiltradas = [];
+        for(let i = 0; i < listaParseada.length; i++){
+            let estadoDeLaTareaQueRecorro = listaParseada[i].estado;
+            if (estadoDeLaTareaQueRecorro == estadoParaFiltrar){
+                arrayDeTareasFiltradas.push(listaParseada[i])
+            }
+        }
+    return arrayDeTareasFiltradas
     }
 
 }

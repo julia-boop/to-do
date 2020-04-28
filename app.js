@@ -15,21 +15,18 @@ switch(accion) {
     case 'tarea':
         let nuevaTarea = {
             titulo : process.argv[3],
-            estado : "pendiente"
+            estado : process.argv[4]
             }
             archivoTareas.guardarTarea(nuevaTarea)
         break;
 
     case 'filtrar':
         let estadoParaFiltrar = process.argv[3]
-        let listaParseada2 = archivoTareas.leerJSON()
-        // let arrayDeTareasFiltradas = []
-        for(let i = 0; i<listaParseada2.length; i++){
-        let estadoTareaQueRecorro = listaParseada2[i].estado
-        if(estadoParaFiltrar == estadoTareaQueRecorro){
-        console.log(listaParseada2[i])
-        }
-        }
+        let resultados = archivoTareas.filtrarPorEstado(estadoParaFiltrar)
+        console.log('Estas son las tareas que encontramos...')
+        resultados.forEach(function(elemento, posicion){
+            console.log(`${posicion + 1} . ${elemento.titulo} - ${elemento.estado}`)
+        })
         break;
 
 
